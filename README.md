@@ -5,6 +5,8 @@ This website presents our group’s understanding of how technology and design c
 **Smart Greens is a digital recycling system that rewards users for eco-friendly actions.** It uses a simple login and registration system, lets users track their recycling activity, and earn points for depositing recyclable materials. The aim of the project is to make recycling smarter, greener, and easier to access for everyday users.
 
 We created this website to help promote the idea of rewarding sustainable habits. The layout and structure are designed to be clear and responsive, with mobile-friendly navigation and user interaction. As a group of four, we divided the tasks based on our strengths. This helped us complete the project efficiently and learn how to work collaboratively in a team setting.
+> [!NOTE]
+> Please be aware the website in this repository is meant to be used purely for demonstration purposes.
 
 ## Features
 ```
