@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Greens - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+</head>
+<body class="page-background page-overlay">
+  <header>
+ <nav>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="images/logo.png" alt="Smart Greens Logo" class="logo">
+    </a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul id="nav-links">
+    <li><a href="index.html" class="active">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="rewards.html">REWARDS</a></li>
+    <li><a href="contact.html">CONTACT US</a></li>
+    <li><a href="login.html">LOG IN</a></li>
+  </ul>
+</nav>
+
+  </header>
+
+  <div class="page-content">
+    <main>
+      <section class="hero">
+        <h1>Recycling Reimagined</h1>
+        <p>Welcome to Smart Greens — a modern, digital recycling solution that rewards you for making eco-conscious choices every day.</p>
+        <a href="register.html" class="button">Join the Movement</a>
+      </section>
+
+      <section>
+        <h2>What is Smart Greens?</h2>
+        <p>Smart Greens is a user-friendly recycling system that lets you log in, deposit recyclable items into smart bins, and earn reward points. It’s designed for homes, schools, and community spaces to boost recycling habits in an engaging way.</p>
+      </section>
+
+      <section>
+        <h2>How It Works</h2>
+        <ul>
+          <li>Sign up or log in to your account.</li>
+          <li>Scan your unique QR code or use your PIN at the Smart Bin station.</li>
+          <li>Deposit eligible recyclables and earn points automatically.</li>
+          <li>Track your progress and redeem eco-friendly rewards.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Meet the Team</h2>
+        <img src="images/teams.jfif" alt="Smart Greens Team Photo" class="team-photo team-framed">
+        <p>We’re a passionate group of creators, developers, and environmentalists working together to reshape how recycling fits into daily life. Our mission is to make sustainability second nature for everyone.</p>
+      </section>
+    </main>
+
+  </div>
+
+      <footer>
+    <p>© 2025 Smart Greens</p>
+  </footer>
+</body>
+</html>

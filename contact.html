@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Greens - Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+</head>
+<body>
+<header>
+<nav>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="images/logo.png" alt="Smart Greens Logo" class="logo">
+    </a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul id="nav-links">
+    <li><a href="index.html" class="active">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="rewards.html">REWARDS</a></li>
+    <li><a href="contact.html">CONTACT US</a></li>
+    <li><a href="login.html">LOG IN</a></li>
+  </ul>
+</nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Get in Touch</h1>
+    <p>Have a question, idea, or just want to say hello? We’d love to hear from you. Reach out and we’ll get back to you as soon as we can.</p>
+    <img src="images/pexels-emmet-35167-128421.jpg" alt="Nature and connection" class="model">
+  </section>
+
+  <section>
+    <form>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" rows="6" placeholder="Let us know how we can help..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Smart Greens</p>
+</footer>
+</body>
+</html>

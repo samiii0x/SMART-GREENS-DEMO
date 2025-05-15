@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Greens - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/dashboard.js"></script>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+</head>
+<body>
+<header>
+<nav>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="images/logo.png" alt="Smart Greens Logo" class="logo">
+    </a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul id="nav-links">
+    <li><a href="index.html" class="active">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="rewards.html">REWARDS</a></li>
+    <li><a href="contact.html">CONTACT US</a></li>
+    <li><a href="login.html">LOG IN</a></li>
+  </ul>
+</nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Welcome back, <span id="username">User</span> 👋</h1>
+    <p>Track your progress, earn rewards, and stay motivated to recycle smarter every day.</p>
+  </section>
+
+  <section>
+    <h2>Your Points</h2>
+    <p><strong id="points">0</strong> points</p>
+    <img src="images/money-2696228_1280.jpg" alt="Points and rewards" class="model">
+  </section>
+
+  <section>
+    <h2>Recycling Activity Log</h2>
+    <ul id="activity-log">
+      <li>No activity yet</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Redeem Your Points</h2>
+    <p>Use 30 points to redeem a reusable Smart Greens tote bag or other eco-friendly rewards.</p>
+    <button onclick="redeemReward()">Redeem for 30 points</button>
+    <p id="redeem-message" style="margin-top: 1rem; color: green;"></p>
+  </section>
+
+  <section>
+    <h2>Your Weekly Recycling</h2>
+    <canvas id="activityChart" width="400" height="200"></canvas>
+  </section>
+
+  <section>
+    <h2>Update Profile</h2>
+    <form id="profile-form">
+      <label for="edit-name">Full Name</label>
+      <input type="text" id="edit-name" required>
+
+      <label for="edit-email">Email Address</label>
+      <input type="email" id="edit-email" required>
+
+      <button type="submit">Save Changes</button>
+      <p id="profile-message" style="margin-top: 1rem;"></p>
+    </form>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div id="rewardModal" style="display: none;" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h3>🎉 Reward Redeemed!</h3>
+    <p>You’ve redeemed a Smart Greens Tote Bag. Thank you for making a difference!</p>
+    <img src="images/pexels-readymade-3850512.jpg" alt="Reward Image" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Smart Greens</p>
+</footer>
+</body>
+</html>

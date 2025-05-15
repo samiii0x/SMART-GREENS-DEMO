@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Greens - Log In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+</head>
+<body class="page-background page-overlay">
+<header>
+<nav>
+  <div class="logo-container">
+    <a href="index.html">
+      <img src="images/logo.png" alt="Smart Greens Logo" class="logo">
+    </a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul id="nav-links">
+    <li><a href="index.html" class="active">HOME</a></li>
+    <li><a href="about.html">ABOUT US</a></li>
+    <li><a href="rewards.html">REWARDS</a></li>
+    <li><a href="contact.html">CONTACT US</a></li>
+    <li><a href="login.html">LOG IN</a></li>
+  </ul>
+</nav>
+</header>
+
+<div class="page-content">
+  <main>
+    <section>
+      <h1>Welcome Back</h1>
+      <p>Log in to access your Smart Greens dashboard and track your progress.</p>
+      <form id="login-form">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Log In</button>
+        <p>Don't have an account? <a href="register.html">Register here</a></p>
+      </form>
+
+      <section>
+        <h3>Quick Access</h3>
+        <p>Use your QR code to log in instantly:</p>
+        <img src="images/qr code.jpg" alt="QR Code" style="width: 180px; display: block; margin: 1rem auto;">
+        <button onclick="simulateQRLogin()">Scan QR to Log In</button>
+      </section>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 Smart Greens</p>
+</footer>
+
+<script>
+  function simulateQRLogin() {
+    const storedEmail = localStorage.getItem("email");
+    const storedPassword = localStorage.getItem("password");
+
+    if (storedEmail && storedPassword) {
+      alert("QR scan successful. Logging in...");
+      window.location.href = "dashboard.html";
+    } else {
+      alert("No account found. Please register first.");
+    }
+  }
+</script>
+</body>
+</html>
