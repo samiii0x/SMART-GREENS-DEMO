@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Account - Smart Greens</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 20px; }
+    h1 { color: #4CAF50; }
+    .points { font-size: 1.5em; font-weight: bold; margin: 15px 0; }
+    .explanation { margin-top: 30px; }
+    img { max-width: 100%; height: auto; margin-top: 10px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1 id="welcome">Welcome!</h1>
+  <p>Your current points: <span class="points" id="points">0</span></p>
+
+  <section class="explanation">
+    <h2>About the Points System</h2>
+    <p>Earn points by recycling different types of waste with Smart Greens!</p>
+    <ul>
+      <li>Paper/Cardboard: 10 points</li>
+      <li>Plastic bottles and cans: 15 points</li>
+      <li>General waste: 1 point (because we encourage recycling!)</li>
+    </ul>
+    <img src="images/recycling-points.jpg" alt="Recycling points illustration" />
+    <p>Collect points and redeem exciting rewards in our rewards section.</p>
+  </section>
+
+  <script>
+    // Function to get URL parameters
+    function getQueryParam(param) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(param);
+    }
+
+    // Set user name and points on page load
+    const name = getQueryParam("name") || "User";
+    const points = getQueryParam("points") || "0";
+
+    document.getElementById("welcome").textContent = `Welcome, ${name}!`;
+    document.getElementById("points").textContent = points;
+  </script>
+</body>
+</html>
