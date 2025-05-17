@@ -68,16 +68,36 @@
 </footer>
 
 <script>
-  function simulateQRLogin() {
-    const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("password");
+  document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    if (storedEmail && storedPassword) {
-      alert("QR scan successful. Logging in...");
-      window.location.href = "dashboard.html";
-    } else {
-      alert("No account found. Please register first.");
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      const response = await fetch("http://192.168.137.114:5000/login", {  // Replace with your backend IP
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        const name = encodeURIComponent(result.name);
+        const points = result.points || 0;
+        window.location.href = `dashboard.html?name=${name}&points=${points}`;
+      } else {
+        alert(result.error || "Login failed. Please check your credentials.");
+      }
+    } catch (error) {
+      alert("Error: Could not connect to server");
     }
+  });
+
+  function simulateQRLogin() {
+    // You can enhance this later to simulate login from QR code data
+    alert("QR login feature coming soon!");
   }
 </script>
 </body>
