@@ -1,104 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Smart Greens - Log In</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
   <script>
     function toggleMenu() {
-      const navLinks = document.getElementById("nav-links");
-      navLinks.classList.toggle("show");
+      document.getElementById("nav-links").classList.toggle("show");
     }
   </script>
 </head>
 <body class="page-background page-overlay">
-<header>
-<nav>
-  <div class="logo-container">
-    <a href="index.html">
-      <img src="images/logo.png" alt="Smart Greens Logo" class="logo">
-    </a>
-  </div>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <a href="index.html"><img src="images/logo.png" alt="Smart Greens Logo" class="logo" /></a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div>
+      <ul id="nav-links">
+        <li><a href="index.html" class="active">HOME</a></li>
+        <li><a href="about.html">ABOUT US</a></li>
+        <li><a href="rewards.html">REWARDS</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+        <li><a href="login.html">LOG IN</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <div class="hamburger" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
-
-  <ul id="nav-links">
-    <li><a href="index.html" class="active">HOME</a></li>
-    <li><a href="about.html">ABOUT US</a></li>
-    <li><a href="rewards.html">REWARDS</a></li>
-    <li><a href="contact.html">CONTACT US</a></li>
-    <li><a href="login.html">LOG IN</a></li>
-  </ul>
-</nav>
-</header>
-
-<div class="page-content">
-  <main>
-    <section>
-      <h1>Welcome Back</h1>
-      <p>Log in to access your Smart Greens dashboard and track your progress.</p>
-      <form id="login-form">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="submit">Log In</button>
-        <p>Don't have an account? <a href="register.html">Register here</a></p>
-      </form>
-
+  <div class="page-content">
+    <main>
       <section>
-        <h3>Quick Access</h3>
-        <p>Use your QR code to log in instantly:</p>
-        <img src="images/qr code.jpg" alt="QR Code" style="width: 180px; display: block; margin: 1rem auto;">
-        <button onclick="simulateQRLogin()">Scan QR to Log In</button>
+        <h1>Welcome Back</h1>
+        <p>Log in to access your Smart Greens dashboard and track your progress.</p>
+        <form id="login-form">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required />
+          <label for="pin">PIN</label>
+          <input type="password" id="pin" name="pin" required />
+          <button type="submit">Log In</button>
+          <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </form>
+
+        <section>
+          <h3>Quick Access</h3>
+          <p>Use your QR code to log in instantly:</p>
+          <img src="images/qr code.jpg" alt="QR Code" style="width: 180px; display: block; margin: 1rem auto;" />
+          <button onclick="simulateQRLogin()">Scan QR to Log In</button>
+        </section>
       </section>
-    </section>
-  </main>
-</div>
+    </main>
+  </div>
 
-<footer>
-  <p>© 2025 Smart Greens</p>
-</footer>
+  <footer><p>© 2025 Smart Greens</p></footer>
 
-<script>
-  document.getElementById("login-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+  <script>
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const pin = document.getElementById("pin").value;
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+      try {
+        const response = await fetch("http://192.168.137.114:5000/login", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({ email, pin })
+        });
 
-    try {
-      const response = await fetch("http://192.168.137.114:5000/login", {  // Replace with your backend IP
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-      });
+        const result = await response.json();
 
-      const result = await response.json();
-
-      if (response.ok) {
-        const name = encodeURIComponent(result.name);
-        const points = result.points || 0;
-        window.location.href = `dashboard.html?name=${name}&points=${points}`;
-      } else {
-        alert(result.error || "Login failed. Please check your credentials.");
+        if (response.ok) {
+          window.location.href = `account.html?name=${encodeURIComponent(result.name)}&points=${result.points}`;
+        } else {
+          alert(result.error || "Login failed");
+        }
+      } catch (error) {
+        alert("Error connecting to server.");
       }
-    } catch (error) {
-      alert("Error: Could not connect to server");
-    }
-  });
+    });
 
-  function simulateQRLogin() {
-    // You can enhance this later to simulate login from QR code data
-    alert("QR login feature coming soon!");
-  }
-</script>
+    function simulateQRLogin() {
+      // You can integrate this later
+      alert("QR scan simulated. Logging in...");
+      window.location.href = "account.html?name=QR%20User&points=42";
+    }
+  </script>
 </body>
 </html>
