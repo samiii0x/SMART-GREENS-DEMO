@@ -33,7 +33,7 @@
     if (!email) {
       document.getElementById("welcome").textContent = "User not logged in.";
     } else {
-      fetch("http://YOUR_SERVER_IP:5000/account", {
+      fetch("http://192.168.137.235:5000/account", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
