@@ -69,7 +69,7 @@
     const email = document.getElementById("email").value;
     const pin = document.getElementById("pin").value;
     try {
-      const response = await fetch("http://192.168.137.114:5000/signup", {
+      const response = await fetch("https://00da-92-40-186-236.ngrok-free.app/signup", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({name, email, pin})
