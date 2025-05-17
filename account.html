@@ -23,23 +23,34 @@
       <li>Plastic bottles and cans: 15 points</li>
       <li>General waste: 1 point (because we encourage recycling!)</li>
     </ul>
-    <img src="images/recycling-points.jpg" alt="Recycling points illustration" />
+    <img src="images/money.jpg" alt="Points reward system" />
     <p>Collect points and redeem exciting rewards in our rewards section.</p>
   </section>
 
   <script>
-    // Function to get URL parameters
-    function getQueryParam(param) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(param);
+    const email = localStorage.getItem("email");
+
+    if (!email) {
+      document.getElementById("welcome").textContent = "User not logged in.";
+    } else {
+      fetch("http://YOUR_SERVER_IP:5000/account", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.name && data.points !== undefined) {
+          document.getElementById("welcome").textContent = `Welcome, ${data.name}!`;
+          document.getElementById("points").textContent = data.points;
+        } else {
+          document.getElementById("welcome").textContent = "Could not load account.";
+        }
+      })
+      .catch(() => {
+        document.getElementById("welcome").textContent = "Error connecting to server.";
+      });
     }
-
-    // Set user name and points on page load
-    const name = getQueryParam("name") || "User";
-    const points = getQueryParam("points") || "0";
-
-    document.getElementById("welcome").textContent = `Welcome, ${name}!`;
-    document.getElementById("points").textContent = points;
   </script>
 </body>
 </html>
